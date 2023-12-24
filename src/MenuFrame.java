@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLOutput;
 
 public class MenuFrame extends JFrame implements ActionListener {
 
@@ -11,7 +12,7 @@ public class MenuFrame extends JFrame implements ActionListener {
     private JLabel background;
 
     MenuFrame(){
-
+        System.out.println("ini frame");
         backgroundImage = new ImageIcon(this.getClass().getResource("/bgfix.png"));
         background = new JLabel(backgroundImage);
         background.setSize(420, 420);
@@ -69,6 +70,9 @@ public class MenuFrame extends JFrame implements ActionListener {
         if (e.getSource() == VarStatic.myButton){
             this.dispose();
             MyFrame main = new MyFrame();
+            System.out.println("jalan");
+            VarStatic.myButton.removeActionListener(VarStatic.myButton.getActionListeners()[0]);
+
         }
         if (e.getSource() == VarStatic.merahBTN){
             snakeColor = VarStatic.merah;

@@ -197,9 +197,6 @@ public class MyPanel extends JPanel implements ActionListener{
                     gerak('U','D');
                     break;
 
-
-                case KeyEvent.VK_ESCAPE:
-                    MenuFrame menu = new MenuFrame();
             }
         }
     }
