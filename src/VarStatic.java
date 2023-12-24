@@ -4,6 +4,10 @@ import java.io.File;
 
 public class VarStatic {
     public static int hiScore = 0;
+    public static int mudah = 120;
+    public static int normal = 80;
+    public static int sulit = 60;
+    public static int mode = normal;
     static Color biru = new Color(31, 194, 255);
     static Color tosca = new Color(100, 255, 201);
     static Color coklat = new Color(47, 18, 8);
@@ -23,5 +27,12 @@ public class VarStatic {
     static JButton unguBTN = new JButton("Ungu");
 
     static File file = new File("/scoreList.txt");
+
+    static String pilihMode(){
+        if (mode == mudah) return "mudah";
+        if (mode == normal) return "normal";
+        if (mode == sulit) return "sulit";
+        return "normal";
+    }
 
 }

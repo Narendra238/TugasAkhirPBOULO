@@ -39,7 +39,7 @@ public class MyPanel extends JPanel implements ActionListener{
         addFood();
         running = true;
 
-        timer = new Timer(80, this);
+        timer = new Timer(VarStatic.mode, this);
         timer.start();
     }
 
@@ -85,7 +85,7 @@ public class MyPanel extends JPanel implements ActionListener{
             graphics.fillRect(x[0], y[0], UNIT_SIZE, UNIT_SIZE);
 
             for (int i = 1; i < length; i++) {
-                graphics.setColor(MenuFrame.snakeColor);
+                graphics.setColor(SettingFrame.snakeColor);
                 graphics.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
             }
 
@@ -119,14 +119,14 @@ public class MyPanel extends JPanel implements ActionListener{
     }
 
     public void checkHit() {
-        // check if head run into its body
+        // kondisi menabrak badannya
         for (int i = length; i > 0; i--) {
             if (x[0] == x[i] && y[0] == y[i]) {
                 running = false;
             }
         }
 
-        // check if head run into walls
+        // kondisi menabrak border
         if (x[0] < 0 || x[0] > WIDTH || y[0] < 0 || y[0] > HEIGHT) {
             running = false;
         }
