@@ -1,15 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.Serial;
 import java.util.Random;
 
 import javax.swing.JPanel;
 
 public class MyPanel extends JPanel implements ActionListener{
 
-    @Serial
-    private static final long serialVersionUID = 1L;
 
     static final int WIDTH = 600;
     static final int HEIGHT = 500;
@@ -88,7 +85,7 @@ public class MyPanel extends JPanel implements ActionListener{
             graphics.fillRect(x[0], y[0], UNIT_SIZE, UNIT_SIZE);
 
             for (int i = 1; i < length; i++) {
-                graphics.setColor(new Color(43, 255, 200, 161));
+                graphics.setColor(MenuFrame.snakeColor);
                 graphics.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
             }
 
@@ -98,18 +95,19 @@ public class MyPanel extends JPanel implements ActionListener{
             graphics.drawString("Score: " + foodEaten, (WIDTH - metrics.stringWidth("Score: " + foodEaten)) / 2, graphics.getFont().getSize());
 
         } else {
+            if (foodEaten > VarStatic.hiScore) {
+                VarStatic.hiScore = foodEaten;
+            }
             gameOver(graphics);
             JButton backButton = new JButton("Back to Main Menu");
             graphics.setFont(new Font("Sans serif", Font.BOLD, 50));
             FontMetrics metrics = getFontMetrics(graphics.getFont());
             int lebarButton = metrics.stringWidth("Back to Main Menu") - 100;
             backButton.setBounds((WIDTH - (lebarButton)) / 2, 300,lebarButton,30);
-            backButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    dispose();
-                    MenuFrame menu = new MenuFrame();
-                }
+            backButton.addActionListener(e -> {
+                JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+                parentFrame.dispose();
+                new MenuFrame();
             });
             this.add(backButton);
         }
@@ -149,10 +147,7 @@ public class MyPanel extends JPanel implements ActionListener{
         metrics = getFontMetrics(graphics.getFont());
         graphics.drawString("Score: " + foodEaten, (WIDTH - metrics.stringWidth("Score: " + foodEaten)) / 2, graphics.getFont().getSize());
     }
-    public void dispose() {
-        JFrame parent = (JFrame) this.getTopLevelAncestor();
-        parent.dispose();
-    }
+
     @Override
     public void actionPerformed(ActionEvent arg0) {
         if (running) {

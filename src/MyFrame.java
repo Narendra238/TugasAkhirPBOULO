@@ -3,8 +3,6 @@ import java.io.Serial;
 
 public class MyFrame extends JFrame{
 
-    @Serial
-    private static final long serialVersionUID = 1L;
     MyFrame() {
         MyPanel panel = new MyPanel();
         this.add(panel);
