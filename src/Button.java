@@ -53,7 +53,7 @@ public class Button extends JButton {
             @Override
             public void mouseReleased(MouseEvent e) {
                 setBackground(back);
-                setForeground(frontPressed);
+                setForeground(front);
             }
         });
 

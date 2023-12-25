@@ -159,7 +159,7 @@ public class MyPanel extends JPanel implements ActionListener{
         LocalDateTime now = LocalDateTime.now();
         try {
             BufferedWriter tulis = new BufferedWriter(new FileWriter("src/scoreList.txt",true));
-            tulis.write("("+dtf.format(now)+") | " + VarStatic.pilihMode() + " | " + foodEaten + " Poin\n");
+            tulis.write("("+dtf.format(now)+") | " + VarStatic.pilihMode() + "\t| " + foodEaten + " Poin\n");
             tulis.close();
             System.out.println("Jalan");
         } catch (IOException e) {
@@ -185,34 +185,19 @@ public class MyPanel extends JPanel implements ActionListener{
         @Override
         public void keyPressed(KeyEvent e) {
             switch(e.getKeyCode()) {
-                case KeyEvent.VK_LEFT:
+                case KeyEvent.VK_LEFT, KeyEvent.VK_A:
                     gerak('R','L');
                     break;
 
-                case KeyEvent.VK_RIGHT:
+                case KeyEvent.VK_RIGHT, KeyEvent.VK_D:
                     gerak('L','R');
                     break;
 
-                case KeyEvent.VK_UP:
+                case KeyEvent.VK_UP, KeyEvent.VK_W:
                     gerak('D','U');
                     break;
 
-                case KeyEvent.VK_DOWN:
-                    gerak('U','D');
-                    break;
-                case KeyEvent.VK_A:
-                    gerak('R','L');
-                    break;
-
-                case KeyEvent.VK_D:
-                    gerak('L','R');
-                    break;
-
-                case KeyEvent.VK_W:
-                    gerak('D','U');
-                    break;
-
-                case KeyEvent.VK_S:
+                case KeyEvent.VK_DOWN, KeyEvent.VK_S:
                     gerak('U','D');
                     break;
 

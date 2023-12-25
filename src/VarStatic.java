@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
 
 public class VarStatic {
     public static int hiScore = 0;
@@ -38,9 +42,9 @@ public class VarStatic {
 
 
     static String pilihMode(){
-        if (level == mudah) return "mudah";
-        if (level == normal) return "normal";
-        if (level == sulit) return "sulit";
+        if (level == mudah) return "MUDAH";
+        if (level == normal) return "NORMAL";
+        if (level == sulit) return "SULIT";
         return "normal";
     }static String pilihWarna(){
         if (SettingFrame.snakeColor == merah) return "Merah";
@@ -53,5 +57,44 @@ public class VarStatic {
         if (SettingFrame.snakeColor == hijau) return "Hijau";
         return "Tosca";
     }
+    static int[] addArray(int[] array,int data){
+        int posisi = array.length;
+        int[] temp = new int[array.length+1];
+        for (int i = 0; i<array.length; i++){
+            temp[i] = array[i];
+        }
+
+        temp[posisi] = data;
+        array = temp;
+        return array;
+    }
+
+    static int getHiScore(int[] array){
+        return Arrays.stream(array).max().getAsInt();
+    }
+    static int size = 0;
+    static int[] array = new int[size];
+    static void getScore(){
+        try (BufferedReader br = new BufferedReader(new FileReader("src/scoreList.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length >= 3) {
+                    String scorePart = parts[2].trim(); // Mengakses bagian yang mengandung nilai poin
+
+                    // Memproses nilai poin sesuai kebutuhan Anda
+                    int score = Integer.parseInt(scorePart.split(" ")[0]);
+                    array = addArray(array, score);
+                    hiScore = getHiScore(array);
+                }
+            }
+            for (int a : array){
+                System.out.println(a);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
