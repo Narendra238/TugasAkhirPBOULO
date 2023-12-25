@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class MenuFrame extends JFrame implements ActionListener {
 
 
-    JLabel hiScoreLabel = new JLabel("High score : "+VarStatic.hiScore);
     JLabel modeLabel  = new JLabel("Level : " + VarStatic.pilihMode());
     JLabel warnaLabel  = new JLabel("warna : ");
     JLabel mainText = new JLabel("ULER JAVVA",SwingConstants.CENTER);
@@ -25,6 +24,7 @@ public class MenuFrame extends JFrame implements ActionListener {
     Button exitBTN = new Button("Exit",20,VarStatic.merah,VarStatic.merahP,VarStatic.merahP,VarStatic.merah, 30);
     MenuFrame(){
         VarStatic.getScore();
+        JLabel hiScoreLabel = new JLabel("High score : "+VarStatic.hiScore);
 
         System.out.println("ini frame");
         VarStatic.myButton.setBounds(100,130,200,40);
