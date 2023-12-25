@@ -1,6 +1,11 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 import javax.swing.JPanel;
@@ -39,7 +44,7 @@ public class MyPanel extends JPanel implements ActionListener{
         addFood();
         running = true;
 
-        timer = new Timer(VarStatic.mode, this);
+        timer = new Timer(VarStatic.level, this);
         timer.start();
     }
 
@@ -95,6 +100,7 @@ public class MyPanel extends JPanel implements ActionListener{
             graphics.drawString("Score: " + foodEaten, (WIDTH - metrics.stringWidth("Score: " + foodEaten)) / 2, graphics.getFont().getSize());
 
         } else {
+            catatScore();
             if (foodEaten > VarStatic.hiScore) {
                 VarStatic.hiScore = foodEaten;
             }
@@ -146,6 +152,19 @@ public class MyPanel extends JPanel implements ActionListener{
         graphics.setFont(new Font("Sans serif", Font.ROMAN_BASELINE, 25));
         metrics = getFontMetrics(graphics.getFont());
         graphics.drawString("Score: " + foodEaten, (WIDTH - metrics.stringWidth("Score: " + foodEaten)) / 2, graphics.getFont().getSize());
+    }
+
+    public void catatScore() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        try {
+            BufferedWriter tulis = new BufferedWriter(new FileWriter("src/scoreList.txt",true));
+            tulis.write("("+dtf.format(now)+") | " + VarStatic.pilihMode() + " | " + foodEaten + " Poin\n");
+            tulis.close();
+            System.out.println("Jalan");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
