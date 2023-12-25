@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class SettingFrame extends JFrame implements ActionListener {
 
     public static Color snakeColor = VarStatic.tosca;
-    JButton done = new JButton("done");
+    Button done = new Button("DONE");
     JButton mudahBtn = new JButton("Mudah");
     JButton normalBtn = new JButton("Normal");
     JButton sulitBtn = new JButton("Sulit");
@@ -18,15 +18,19 @@ public class SettingFrame extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
+        panel.setBackground(new Color(27, 38, 83));
         panel.setLayout(null);
         this.add(panel);
 
         JLabel mainText = new JLabel("SETTING",SwingConstants.CENTER);
         mainText.setBounds(0,0,420,100);
-        mainText.setFont(new Font("Arial", Font.BOLD, 30));
+        mainText.setFont(new Font("Consolas", Font.BOLD, 30));
+        mainText.setForeground(Color.white);
 
         JLabel modeText = new JLabel("Pilih mode :",SwingConstants.CENTER);
+        modeText.setFont(new Font("Consolas", Font.PLAIN, 15));
         modeText.setBounds(0,0,420,180);
+        modeText.setForeground(Color.white);
 
         int tinggi = 110;
         mudahBtn.setBounds(40,tinggi,100,40);
@@ -38,6 +42,8 @@ public class SettingFrame extends JFrame implements ActionListener {
 
         JLabel colorText = new JLabel("Pilih warna badan :",SwingConstants.CENTER);
         colorText.setBounds(0,80,420,180);
+        colorText.setForeground(Color.white);
+        colorText.setFont(new Font("Consolas", Font.PLAIN, 15));
 
         tinggi = 240;
         VarStatic.merahBTN.setBounds(10,tinggi,80,40);
@@ -110,6 +116,9 @@ public class SettingFrame extends JFrame implements ActionListener {
         }
         if (e.getSource() == VarStatic.unguBTN){
             snakeColor = VarStatic.ungu;
+        }
+        if (e.getSource() == VarStatic.hijauBTN){
+            snakeColor = VarStatic.hijau;
         }
         if (e.getSource() == mudahBtn) {
             VarStatic.mode = VarStatic.mudah;

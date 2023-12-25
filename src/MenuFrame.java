@@ -10,6 +10,8 @@ public class MenuFrame extends JFrame implements ActionListener {
 
     JLabel hiScoreLabel = new JLabel("High score : "+VarStatic.hiScore);
     JLabel modeLabel  = new JLabel("mode : " + VarStatic.pilihMode());
+    JLabel warnaLabel  = new JLabel("warna : ");
+    JLabel pilihanWarnaLabel  = new JLabel(VarStatic.pilihWarna());
     private ImageIcon backgroundImage;
     private JLabel background;
 
@@ -26,11 +28,16 @@ public class MenuFrame extends JFrame implements ActionListener {
         settingBTN.addActionListener(this);
         hiScoreLabel.setBounds(10, -80, 100, 200);
         modeLabel.setBounds(10, -60, 100, 200);
+        warnaLabel.setBounds(10, -40, 100, 200);
+        pilihanWarnaLabel.setBounds(55, -40, 100, 200);
+        pilihanWarnaLabel.setForeground(SettingFrame.snakeColor);
 
 
 //        this.add(background);
         this.add(hiScoreLabel);
         this.add(modeLabel);
+        this.add(warnaLabel);
+        this.add(pilihanWarnaLabel);
         this.add(VarStatic.myButton);
         this.add(settingBTN);
 

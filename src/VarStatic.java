@@ -15,16 +15,17 @@ public class VarStatic {
     static Color pink = new Color(255, 0, 233);
     static Color ungu = new Color(184, 90, 210);
     static Color merah = new Color(255, 0, 0);
+    static Color hijau = new Color(0, 255, 6);
 
-    static JButton myButton = new JButton("Main");
-    static JButton merahBTN = new JButton("Merah");
-    static JButton biruBTN = new JButton("Biru");
-    static JButton hijauBTN = new JButton("Hijau");
-    static JButton toscaBTN = new JButton("Tosca");
-    static JButton coklatBTN = new JButton("Coklat");
-    static JButton kuningBTN = new JButton("Kuning");
-    static JButton pinkBTN = new JButton("Pink");
-    static JButton unguBTN = new JButton("Ungu");
+    static Button myButton = new Button("Main");
+    static Button merahBTN = new Button("Merah",merah,Color.white,5);
+    static Button biruBTN = new Button("Biru",biru,Color.black,5);
+    static Button hijauBTN = new Button("Hijau",hijau,Color.black,5);
+    static Button toscaBTN = new Button("Tosca",tosca,Color.black,5);
+    static Button coklatBTN = new Button("Coklat",coklat,Color.white,5);
+    static Button kuningBTN = new Button("Kuning",kuning,Color.black,5);
+    static Button pinkBTN = new Button("Pink",pink,Color.black,5);
+    static Button unguBTN = new Button("Ungu",ungu,Color.black,5);
 
     static File file = new File("/scoreList.txt");
 
@@ -33,6 +34,16 @@ public class VarStatic {
         if (mode == normal) return "normal";
         if (mode == sulit) return "sulit";
         return "normal";
+    }static String pilihWarna(){
+        if (SettingFrame.snakeColor == merah) return "Merah";
+        if (SettingFrame.snakeColor == biru) return "Biru";
+        if (SettingFrame.snakeColor == tosca) return "tosca";
+        if (SettingFrame.snakeColor == coklat) return "Coklat";
+        if (SettingFrame.snakeColor == kuning) return "Kuning";
+        if (SettingFrame.snakeColor == pink) return "Pink";
+        if (SettingFrame.snakeColor == ungu) return "Ungu";
+        if (SettingFrame.snakeColor == hijau) return "Hijau";
+        return "Tosca";
     }
 
 }
