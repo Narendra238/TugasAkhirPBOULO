@@ -9,13 +9,14 @@ public class MenuFrame extends JFrame implements ActionListener {
 
 
     JLabel hiScoreLabel = new JLabel("High score : "+VarStatic.hiScore);
-    JLabel modeLabel  = new JLabel("mode : " + VarStatic.pilihMode());
+    JLabel modeLabel  = new JLabel("Level : " + VarStatic.pilihMode());
     JLabel warnaLabel  = new JLabel("warna : ");
     JLabel pilihanWarnaLabel  = new JLabel(VarStatic.pilihWarna());
     private ImageIcon backgroundImage;
     private JLabel background;
 
     JButton settingBTN = new JButton("Setting");
+    JButton exitBTN = new JButton("Exit");
     MenuFrame(){
         System.out.println("ini frame");
         backgroundImage = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/bgfix.png")));
@@ -31,7 +32,8 @@ public class MenuFrame extends JFrame implements ActionListener {
         warnaLabel.setBounds(10, -40, 100, 200);
         pilihanWarnaLabel.setBounds(55, -40, 100, 200);
         pilihanWarnaLabel.setForeground(SettingFrame.snakeColor);
-
+        exitBTN.setBounds(100,300,200,40);
+        exitBTN.addActionListener(this);
 
 //        this.add(background);
         this.add(hiScoreLabel);
@@ -40,6 +42,7 @@ public class MenuFrame extends JFrame implements ActionListener {
         this.add(pilihanWarnaLabel);
         this.add(VarStatic.myButton);
         this.add(settingBTN);
+        this.add(exitBTN);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(420,420);
@@ -63,6 +66,19 @@ public class MenuFrame extends JFrame implements ActionListener {
             settingBTN.removeActionListener(settingBTN.getActionListeners()[0]);
             VarStatic.myButton.removeActionListener(VarStatic.myButton.getActionListeners()[0]);
 
+        }if (e.getSource() == exitBTN) {
+
+            UIManager.put("OptionPane.yesButtonText", "Ya");
+            UIManager.put("OptionPane.noButtonText", "Tidak");
+            int keluar = JOptionPane.showConfirmDialog(this,
+                    "Yakin Mau Keluar ? ?", "Exit",
+                    JOptionPane.YES_NO_OPTION);
+
+            if (keluar == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
+            UIManager.put("OptionPane.yesButtonText",UIManager.getString("OptionPane.yesButtonText"));
+            UIManager.put("OptionPane.noButtonText", UIManager.getString("OptionPane.noButtonText"));
         }
 
     }

@@ -27,7 +27,7 @@ public class SettingFrame extends JFrame implements ActionListener {
         mainText.setFont(new Font("Consolas", Font.BOLD, 30));
         mainText.setForeground(Color.white);
 
-        JLabel modeText = new JLabel("Pilih mode :",SwingConstants.CENTER);
+        JLabel modeText = new JLabel("Pilih Level :",SwingConstants.CENTER);
         modeText.setFont(new Font("Consolas", Font.PLAIN, 15));
         modeText.setBounds(0,0,420,180);
         modeText.setForeground(Color.white);
